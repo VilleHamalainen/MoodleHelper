@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SyntaxGenerator", "SyntaxGenerator\SyntaxGenerator.csproj", "{3B51C12F-F71A-489E-A4BA-D86BFC4CEBA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorUI", "BlazorUI\BlazorUI.csproj", "{9048A269-E7C5-4AD9-9D0E-C475B25D0C19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B51C12F-F71A-489E-A4BA-D86BFC4CEBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B51C12F-F71A-489E-A4BA-D86BFC4CEBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B51C12F-F71A-489E-A4BA-D86BFC4CEBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B51C12F-F71A-489E-A4BA-D86BFC4CEBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9048A269-E7C5-4AD9-9D0E-C475B25D0C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9048A269-E7C5-4AD9-9D0E-C475B25D0C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9048A269-E7C5-4AD9-9D0E-C475B25D0C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9048A269-E7C5-4AD9-9D0E-C475B25D0C19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8271E20B-6BBC-4F55-817B-DBE4B09A928C}
+	EndGlobalSection
+EndGlobal

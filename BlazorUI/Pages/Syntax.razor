@@ -1,0 +1,291 @@
+﻿@page "/syntaxgenerator"
+@inject ClipboardService ClipboardService
+
+<h3>Syntax Generator</h3>
+
+<div class="form-group">
+    <label for="questionType">Select Question Type:</label>
+    <select @bind="selectedQuestionType">
+        <option value="Numerical">Numerical</option>
+        <option value="ShortAnswer">Short Answer</option>
+        <option value="MultiChoice">Multiple Choice</option>
+        <option value="MultiResponse">Multiple Response</option>
+    </select>
+</div>
+
+@if (selectedQuestionType == "Numerical")
+{
+    <div class="form-group">
+        <label for="correctAnswer">Correct Answer:</label>
+        <input type="number" @bind="correctNumAnswer" step="any">
+    </div>
+    <div class="form-group">
+        <label for="margin">Margin of Error:</label>
+        <input type="number" @bind="margin" step="any">
+    </div>
+}
+
+@if (selectedQuestionType == "ShortAnswer")
+{
+    <div class="form-group">
+        <button @onclick="() => AddAnswerOption(selectedQuestionType)" class="btn btn-primary">Add answer option</button>
+    </div>
+
+    @foreach (var answerOption in saAnswers)
+    {
+        <br />
+        <div>
+            <label for="answerOption.Text">Answer:</label>
+            <input type=text @bind="answerOption.Text">
+        </div>
+        <div>
+            <label for="answerOption.IsCorrect">Is Correct:</label>
+            <input type="checkbox" @bind="answerOption.IsCorrect">
+        </div>
+        <div>
+            <label for="answerOption.Feedback">Feedback for this answer:</label>
+            <input type="text" @bind="answerOption.Feedback">
+        </div>
+        <div>
+            <button @onclick="() => RemoveAnswerOption(selectedQuestionType, answerOption)" class="btn btn-outline-danger">Remove</button>
+        </div>
+    }
+
+    <div class="form-group">
+        <label for="isCaseSensitive">Is Case Sensitive:</label>
+        <input type="checkbox" class="form-check-input" @bind="isCaseSensitive">
+    </div>
+
+    <div class="form-group">
+        <label for="feedback">Feedback for all wrong answers:</label>
+        <input type="text" @bind="feedback">
+    </div>
+}
+
+@if (selectedQuestionType == "MultiChoice")
+{
+    <div class="form-group">
+        <button @onclick="() => AddAnswerOption(selectedQuestionType)" class="btn btn-primary">Add answer option</button>
+    </div>
+
+        @foreach (var answerOption in mcAnswers)
+        {
+            <br />
+            <div>
+                <label for="answerOption.Text">Answer:</label>
+                <input type=text @bind="answerOption.Text">
+            </div>
+            <div>
+                <label for="answerOption.IsCorrect">Is Correct:</label>
+                <input type="checkbox" @bind="answerOption.IsCorrect">
+            </div>
+            <div>
+                <label for="answerOption.Feedback">Feedback:</label>
+                <input type="text" @bind="answerOption.Feedback">
+            </div>
+            <div>
+                <button @onclick="() => RemoveAnswerOption(selectedQuestionType, answerOption)" class="btn btn-outline-danger">Remove</button>
+            </div> 
+        }   
+    
+    <br/>
+    <div class="form-group">
+        <label for="isRandomized">Randomize Answers:</label>
+        <input type="checkbox" class="form-check-input" @bind="isMCRandomized">
+    </div>    
+
+    <div class="form-group">
+        <label for="verChecked">Vertical Presentation:</label>
+        <input type="checkbox" checked="@verChecked" class="form-check-input" @onclick="() => PresentationClick(1)">
+    </div>
+
+    <div class="form-group">
+        <label for="horChecked">Horizontal Presentation:</label>
+        <input type="checkbox" checked="@horChecked" class="form-check-input" @onclick="() => PresentationClick(2)">
+    </div>
+
+    <div class="form-group">
+        <label for="droChecked">Dropdown Presentation:</label>
+        <input type="checkbox" checked="@droChecked" class="form-check-input" @onclick="() => PresentationClick(3)">
+    </div>
+}
+
+@if (selectedQuestionType == "MultiResponse")
+{
+    <div class="form-group">
+        <button @onclick="() => AddAnswerOption(selectedQuestionType)" class="btn btn-primary">Add answer option</button>
+    </div>
+
+        @foreach (var answerOption in mrAnswers)
+        {
+            <br />
+            <div>
+                <label for="answerOption.Text">Answer:</label>
+                <input type=text @bind="answerOption.Text">
+            </div>
+            <div>
+                <label for="answerOption.IsCorrect">Is Correct:</label>
+                <input type="checkbox" @bind="answerOption.IsCorrect">
+            </div>
+            <div>
+                <label for="answerOption.Feedback">Feedback:</label>
+                <input type="text" @bind="answerOption.Feedback">
+            </div>
+            <div>
+                <button @onclick="() => RemoveAnswerOption(selectedQuestionType, answerOption)" class="btn btn-outline-danger">Remove</button>
+            </div>
+        }   
+    
+    <br/>
+    <div class="form-group">
+        <label for="isRandomized">Randomize Answers:</label>
+        <input type="checkbox" class="form-check-input" @bind="isMRRandomized">
+    </div>
+
+    <div class="form-group">
+        <label for="multiRIsVertical">Vertical Presentation:</label>
+        <input type="checkbox" class="form-check-input" @bind="multiRIsVertical">
+    </div>
+}
+
+<div class="form-group">
+    <label for="maxPoints">Max Points:</label>
+    <input type="number" @bind="maxPoints">
+</div>
+
+<br/>
+<button class="btn btn-primary" @onclick="GenerateSyntax">Generate Syntax</button>
+
+@if (!string.IsNullOrEmpty(syntax))
+{
+    <div class="alert alert-success mt-3">
+        Generated Syntax: @syntax
+        <button class="btn btn-outline-success" @onclick="() => CopyToClipboard(syntax)">Copy to Clipboard</button>
+        <Popup @ref="popup" />
+    </div>
+}
+
+@code {
+    private int maxPoints = 1;
+    private string? feedback;
+    private string? syntax;
+
+    // Numerical
+    private decimal correctNumAnswer;
+    private decimal margin;
+
+    // Short Answer
+    private List<AnswerOption> saAnswers = new List<AnswerOption>();
+    private bool isCaseSensitive;
+
+    // Multi Choice
+    private List<AnswerOption> mcAnswers = new List<AnswerOption>();
+    private bool? multiCIsVertical;
+    private bool isMCRandomized;
+
+    // Multi Response
+    private List<AnswerOption> mrAnswers = new List<AnswerOption>();
+    private bool multiRIsVertical;
+    private bool isMRRandomized;
+
+    private Popup popup = new Popup();
+    private bool verChecked = false;
+    private bool horChecked = false;
+    private bool droChecked = false;
+    private string selectedQuestionType = "Numerical";
+
+    private async Task CopyToClipboard(string text)
+    {
+        try
+        {
+            await ClipboardService.WriteTextAsync(text);
+        }
+        catch
+        {
+            popup.Show("Failed to copy to clipboard", "Error");
+        }
+    }
+
+    private void AddAnswerOption(string listName)
+    {
+        var correctList = listName switch
+        {
+            "ShortAnswer" => saAnswers,
+            "MultiChoice" => mcAnswers,
+            "MultiResponse" => mrAnswers,
+            _ => throw new ArgumentException("Invalid list name", nameof(listName))
+        };
+
+        correctList.Add(new AnswerOption());
+    }
+
+    private void RemoveAnswerOption(string listName, AnswerOption answerOption)
+    {
+        var correctList = listName switch
+        {
+            "ShortAnswer" => saAnswers,
+            "MultiChoice" => mcAnswers,
+            "MultiResponse" => mrAnswers,
+            _ => throw new ArgumentException("Invalid list name", nameof(listName))
+        };
+
+        try
+        {
+            correctList.Remove(answerOption);
+        }
+
+        catch
+        {
+            throw new ArgumentOutOfRangeException("Given object is not in given list", nameof(answerOption));
+        }
+    }
+
+    private void PresentationClick(int boxChecked)
+    {
+        switch (boxChecked)
+        {
+            case 1:
+                verChecked = true;
+                horChecked = false;
+                droChecked = false;
+                multiCIsVertical = true;
+                break;
+            case 2:
+                verChecked = false;
+                horChecked = true;
+                droChecked = false;
+                multiCIsVertical = false;
+                break;
+            case 3:
+                verChecked = false;
+				horChecked = false;
+				droChecked = true;
+				multiCIsVertical = null;
+				break;
+            default:
+				break;
+        }
+    }
+
+    private void GenerateSyntax()
+    {
+        switch (selectedQuestionType)
+        {
+            case "Numerical":
+                syntax = SyntaxGen.CreateNumerical(correctNumAnswer, margin, maxPoints);
+                break;
+            case "ShortAnswer":
+                syntax = SyntaxGen.CreateShortAnswer(saAnswers, feedback, isCaseSensitive, 100, maxPoints);
+                break;
+            case "MultiChoice":
+                syntax = SyntaxGen.CreateMultiChoice(mcAnswers, isMCRandomized, multiCIsVertical, 100, maxPoints);
+                break;
+            case "MultiResponse":
+                syntax = SyntaxGen.CreateMultiResponse(mrAnswers, isMRRandomized, multiRIsVertical, 100, maxPoints);
+                break;
+            default:
+                syntax = "Invalid question type selected.";
+                break;
+        }
+    }
+}
