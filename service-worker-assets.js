@@ -157,6 +157,10 @@
       "url": "BlazorUI.styles.css"
     },
     {
+      "hash": "sha256-Nvz7UVan0HUtLlDSgcjAr7KyfP62h7vtQGJDV48G5aY=",
+      "url": "404.html"
+    },
+    {
       "hash": "sha256-AYvnQHbVQS9Zk\/pioAR1WNwPjHHiX+NGlfvVOCiv4Vw=",
       "url": "CookieStorageAccessor.js"
     },
@@ -233,5 +237,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "haIGuOVn"
+  "version": "nGgETp5q"
 };
