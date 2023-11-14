@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "BlazorUI.dll": "sha256-VOqX\/7EmjGelutWWsxmOFRFIDa7nBJfiAsRcOqAcv\/g=",
+      "BlazorUI.dll": "sha256-6VrvUMkhBLoqpl4IH2s4fOfxX+CQUfXTQ5r24Sf85Z8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-BKJCSp2lu30ASAgTN6TCfKBjEE6xPzxosxUWCAiwHnI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-NXNSPYU7em1AlAnFJ8AJeeltog5RTwLt+SdhtVVCtqA=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-2+ToeRN36ZfEtkp9zMTrXxaWTBvesGRQ8aS31mr1II0=",
@@ -22,7 +22,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-eXvGx2jcjpTPEJoAHBsW\/VuMPbNyyU+AsuhPmkzSSRY=",
       "Microsoft.JSInterop.dll": "sha256-JNIwb8EZ1DZvNyFfJ8JklynGrQyAe6eBFhjYuYgs+k4=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-4cMfifCYL\/bv5qiC8T6HyABhOewZlTXovRc+E\/CrUbc=",
-      "SyntaxGenerator.dll": "sha256-ZlEVxEn16SRiSnE7bcGIXod7lQssXz\/3kmymBVT\/8SI=",
+      "SyntaxGenerator.dll": "sha256-Tg9iBrKsCOwMoAR\/4YSXdTd8B1mecZbW7bA6j2NVw+I=",
       "System.Collections.Concurrent.dll": "sha256-IpzAhtk4TdX2m+SR4ebCj5sgX5O179AZkpT62BAQQfU=",
       "System.Collections.dll": "sha256-jkKD\/PBa8vMUNONE8Jx\/51GmxfFcuE3tGuV0\/sHpGDM=",
       "System.ComponentModel.dll": "sha256-BAnGoKLFnFbSQS0kCSYtUsu+\/vZeQXdDQsG\/ELvPJ\/c=",
