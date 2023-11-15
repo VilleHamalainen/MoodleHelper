@@ -1,6 +1,6 @@
 {
-  "name": "BlazorUI",
-  "short_name": "BlazorUI",
+  "name": "BlazorUITemp",
+  "short_name": "BlazorUITemp",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

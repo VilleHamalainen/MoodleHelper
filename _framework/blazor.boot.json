@@ -2,13 +2,13 @@
   "cacheBootResources": true,
   "config": [ ],
   "debugBuild": false,
-  "entryAssembly": "BlazorUI",
+  "entryAssembly": "BlazorUITemp",
   "icuDataMode": 0,
   "linkerEnabled": true,
   "resources": {
     "assembly": {
       "Blazor.LocalStorage.dll": "sha256-9Jd9oTbFEB9DW3O1XxAmsdOoi9y1UwAZrlelTcvK1o4=",
-      "BlazorUI.dll": "sha256-vimFd+tVvP+r4i38eejEutZOMGwmkGaxIAw476jl0vs=",
+      "BlazorUITemp.dll": "sha256-qqYixuXYoGHcyaIWeDzdDaRSfQLU\/IivebcXjwJchJI=",
       "Microsoft.AspNetCore.Components.dll": "sha256-BKJCSp2lu30ASAgTN6TCfKBjEE6xPzxosxUWCAiwHnI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-NXNSPYU7em1AlAnFJ8AJeeltog5RTwLt+SdhtVVCtqA=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-2+ToeRN36ZfEtkp9zMTrXxaWTBvesGRQ8aS31mr1II0=",
