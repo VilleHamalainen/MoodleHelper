@@ -45,7 +45,7 @@
       "System.Text.Encodings.Web.dll": "sha256-bOs2gamD3eRmuwPs45F7UWWjRzRCriJxq1eZcdFogwk=",
       "System.Text.Json.dll": "sha256-4NzJoPf2wO6JKLnYJ2VYVjnp1bJBcDkcNTtf2oDKfEA=",
       "System.Threading.dll": "sha256-3iW2uXCAH35MEfs2Gu4a0xTV3vGgQliM3sRA4ljArZc=",
-      "testBlazorWASM.dll": "sha256-3bYG2uGVbNWI4idMf3qJbl01i0wVLxjWoZTKejgs7V4="
+      "testBlazorWASM.dll": "sha256-wo4q8jcAO\/G\/oUqzc\/GyAEJUzp5kqA+IoCsAn7g1ULQ="
     },
     "extensions": null,
     "lazyAssembly": null,
