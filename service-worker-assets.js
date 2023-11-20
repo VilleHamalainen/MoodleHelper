@@ -5,6 +5,10 @@
       "url": "testBlazorWASM.styles.css"
     },
     {
+      "hash": "sha256-H1eRZcq2bcUY29novzBNu3dA4deOP9Ej8qCDOORLQrc=",
+      "url": "404.html"
+    },
+    {
       "hash": "sha256-10KEeWxsgry5D9LUZc0K86lpIg9RcWdyyBB5sXq6Ypk=",
       "url": "css\/app.css"
     },
@@ -27,10 +31,6 @@
     {
       "hash": "sha256-dScYLNf1J1p7sAjRqtuKbCLNjd74rCdefTdtQyKqsb4=",
       "url": "images\/logo\/logo-white.svg"
-    },
-    {
-      "hash": "sha256-H1eRZcq2bcUY29novzBNu3dA4deOP9Ej8qCDOORLQrc=",
-      "url": "index.html"
     },
     {
       "hash": "sha256-6G7CVgcoiqjnuCHiTg2tsx9Ln6KYxpPvEo1Y2\/SPtwU=",
@@ -245,5 +245,5 @@
       "url": "_content\/Blazor.Bootstrap\/icon\/128X128.png"
     }
   ],
-  "version": "nu9pzv5y"
+  "version": "81ygCy7C"
 };
