@@ -17,6 +17,10 @@
       "url": "css\/bootstrap\/bootstrap.min.css.map"
     },
     {
+      "hash": "sha256-nbIOAkscwL8NZzXapRtC9rCVdWIpuBDhr12wS\/1X8Co=",
+      "url": "css\/site.css"
+    },
+    {
       "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
       "url": "icon-512.png"
     },
@@ -241,5 +245,5 @@
       "url": "_content\/Blazor.Bootstrap\/icon\/128X128.png"
     }
   ],
-  "version": "g53EZh5\/"
+  "version": "nu9pzv5y"
 };
