@@ -1,0 +1,149 @@
+﻿@page "/MultiChoice"
+@using static SyntaxGenerator.SyntaxGen
+@using SyntaxGenerator.Models
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Monivalinta | MOODLE GENERAATTORI</PageTitle>
+
+
+
+<Button To="/" Color="ButtonColor.Primary" Outline="true" Type="ButtonType.Link"> Palaa </Button>
+<h3>Monivalinta</h3>
+<ul>Yksi vai useampi valittava vastaus?</ul>
+<ul>Yksi <Switch @bind-Value="show" @onclick="fixBoxed"Label="Useampi oikein"></Switch></ul>
+
+<p>
+    <ul>Syötä vastaukset, ja että onko oikein vai väärin. Erottele useammat vastaukset rivinvaihdolla. Erottele onko oikein vai väärin ';' merkillä.</ul>
+    <ul>(Esim.)</ul>
+    <ul>Vastaus1;true</ul>
+    <ul>Vastaus2;false</ul>
+
+</p>
+<textarea id="multichoice" @bind="answerString" style="width: 300px;height: 300px;" />
+
+<Switch @bind-Value="shuffleAnswers" Label="Sekoita vastaukset?" />
+
+<ul>Vastauksen tyyppi?</ul>
+<ul>Valittu vastaustyyppi on @answerLabel</ul>
+<Dropdown>
+    <DropdownToggleButton Color="ButtonColor.Secondary">Vastauksen tyyppi</DropdownToggleButton>
+    <DropdownMenu>
+        <DropdownItem @onclick="DisableOthersThanVertical" Type="ButtonType.Link">Pysty</DropdownItem>
+        <DropdownItem @onclick="DisableOthersThanHorizontal" Type="ButtonType.Link">Vaaka</DropdownItem>
+        <DropdownItem @onclick="DisableOthersThanBoxed" Disabled="@show" Type="ButtonType.Link">Laatikko</DropdownItem>
+    </DropdownMenu>
+</Dropdown>
+
+<ul>Syötä Pistemäärä</ul>
+<input type="number" @bind="pointAmount" style="width: 300px;" />
+
+<Button Color="ButtonColor.Primary" Outline="true" @onclick="GenerateMultiChoice">Luo syntaksi</Button>
+
+<h3>Tulos: @MultiChoiceResult</h3>
+
+
+@code {
+    bool shuffleAnswers;
+    bool horizontalOrVertical;
+    bool verticalTrue = false;
+    bool horizontalTrue = false;
+    bool boxedTrue = false;
+    private static bool? finalValue = null;
+    string finalString = "";
+    private bool enabled = false;
+    private bool disabled = true;
+    private string MultiChoiceResult = "";
+    private static string answerString { get; set; }
+    private static string pointAmount{ get; set; }
+    private static string previous = "";
+    private string answerLabel = "";
+    List<AnswerOption> MultiChoiceList = new List<AnswerOption>();
+    private bool show = false;
+    private static bool finalValueNotNull;
+
+    //In case boxed is selected while disabling it, this will change boxed into vertical. != true is because onclick happens before the actual value change.
+    private void fixBoxed()
+    {
+        if (boxedTrue == true&&show!=true)
+        {
+            DisableOthersThanVertical();
+        }
+    }
+
+    private void SetLabel()
+    {
+        if (verticalTrue == true)
+        {
+            answerLabel = "PYSTYSUUNTAINEN MONIVALINTA";
+        }
+        if (horizontalTrue == true)
+        {
+            answerLabel = "VAAKASUUNTAINEN MONIVALINTA";
+        }
+        if (boxedTrue == true)
+        {
+            answerLabel = "LAATIKKOVASTAUS";
+        }
+    }
+
+    private void DisableOthersThanVertical()
+    {
+        verticalTrue = true;
+        horizontalTrue = false;
+        boxedTrue = false;
+        SetLabel();
+        finalValue = true;
+    }
+    private void DisableOthersThanHorizontal()
+    {
+        verticalTrue = false;
+        horizontalTrue = true;
+        boxedTrue = false;
+        SetLabel();
+        finalValue = false;
+    }
+    private void DisableOthersThanBoxed()
+    {
+        verticalTrue = false;
+        horizontalTrue = false;
+        boxedTrue = true;
+        SetLabel();
+        finalValue = null;
+    }
+
+
+    private void GenerateMultiChoice()
+    {
+        MultiChoiceList.Clear();
+        foreach (string line in answerString.Split('\n'))
+        {
+            foreach (string correct in line.Split(";"))
+            {
+                if (correct == "true")
+                {
+                    MultiChoiceList.Add(new AnswerOption(previous, Convert.ToBoolean(correct)));
+                }
+                if (correct == "false")
+                {
+                    MultiChoiceList.Add(new AnswerOption(previous, Convert.ToBoolean(correct)));
+                }
+                if (correct != "false")
+                {
+                    previous = correct;
+                }
+            }
+        }
+        if (show == false)
+        {
+            MultiChoiceResult = CreateMultiChoice(MultiChoiceList, shuffleAnswers, finalValue, Int32.Parse(pointAmount));
+        }
+        else
+        {
+            if (show == true)
+            {
+                finalValueNotNull = finalValue.HasValue ? finalValue.Value : false;
+                MultiChoiceResult = CreateMultiResponse(MultiChoiceList, shuffleAnswers, finalValueNotNull, Int32.Parse(pointAmount));
+            }
+        }
+    }
+}

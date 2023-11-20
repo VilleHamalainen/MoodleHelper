@@ -1,0 +1,63 @@
+﻿@page "/ShortAnswer"
+@using static SyntaxGenerator.SyntaxGen
+@using SyntaxGenerator.Models
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Lyhyt vastaus | MOODLE GENERAATTORI</PageTitle>
+
+<Button To="/" Color="ButtonColor.Primary" Outline="true" Type="ButtonType.Link"> Palaa </Button>
+<h3>Lyhyt Vastaus</h3>
+
+<p>
+	<ul>Syötä Vastaus/Vastaukset, ja että onko oikein vai väärin. Erottele useammat vastaukset rivinvaihdolla. Erottele, onko oikein vai väärin ';' merkillä.</ul>
+    <ul>(Esim.)</ul> 
+    <ul>Vastausmalli,true</ul>
+        <ul>Vastaus2,false</ul>
+    
+</p>
+<textarea id="shortAnswer" @bind="answerString" style="width: 300px;height: 300px;" />
+<ul>Syötä palaute</ul>
+<textarea id="shortFeedback" @bind="feedbackString" style="width: 300px;height: 150px;" />
+<Switch @bind-Value="agree1" Label="Merkkiriippuvainen?" />
+
+<Button Color="ButtonColor.Primary" Outline="true" @onclick="GenerateShort">Luo syntaksi</Button>
+
+<h3>Tulos: @shortResult</h3>
+
+
+@code {
+    bool agree1;
+    private bool enabled = false;
+    private bool disabled = true;
+    private string shortResult = "";
+    private static string answerString { get; set; }
+    private static string feedbackString{ get; set; }
+    string previous = "";
+    List<AnswerOption> AnswersList = new List<AnswerOption>();
+
+    private void GenerateShort()
+    {
+        AnswersList.Clear();
+        foreach (string line in answerString.Split('\n'))
+        {
+            foreach (string correct in line.Split(";"))
+            {
+                if (correct == "true")
+                {
+                    AnswersList.Add(new AnswerOption(previous, Convert.ToBoolean(correct)));
+                }
+                if (correct == "false")
+                {
+                    AnswersList.Add(new AnswerOption(previous, Convert.ToBoolean(correct)));
+                }
+                if (correct != "false")
+                {
+                    previous = correct;                    
+                }
+            }
+        }
+        //uses the generator from SyntaxGen.cs, which is located in the "code" folder of the project
+            shortResult = CreateShortAnswer(AnswersList,feedbackString,agree1,1);
+
+    }
+}
