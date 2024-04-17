@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "BlazorBootstrap.dll": "sha256-gfugosYYEAdV1p7eei+H5JX26K+51dU\/ljf0LZZ2E6g=",
-      "BlazorUIWebAssembly.dll": "sha256-prQ9tknhBIFXRWmVw4rz49pK4GkkRUgdSxgPvF2Kipg=",
+      "BlazorUIWebAssembly.dll": "sha256-zJv5qdR4EhoeKRht\/cBM5KL675naMa72WcIbzYccgw8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-KGU3jX\/ggTq5\/7P\/VGanLHqOKiY7rBTAZGN9zzjs0I4=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-FWCEsnc\/zNrDRQFjJuO2vIo7cW\/XorIAne0MmXtx6aQ=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-\/LjnfvAWTEngQWE2nHiFC4bxUjd8IhylHkuNTa4nNKE=",
@@ -24,7 +24,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-eXvGx2jcjpTPEJoAHBsW\/VuMPbNyyU+AsuhPmkzSSRY=",
       "Microsoft.JSInterop.dll": "sha256-LjdcbA3WtwWbYygJWgc8vq7aPGsrvix13ESpNicMyYY=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-4cMfifCYL\/bv5qiC8T6HyABhOewZlTXovRc+E\/CrUbc=",
-      "SyntaxGenerator.dll": "sha256-IBb6Qr7QDsQpZR0YiBHC0XPhOZyRxlI\/Kqs22D\/iho4=",
+      "SyntaxGenerator.dll": "sha256-MLMbi3wgXRT1d2nHmRYLRNgD8pcOqoF+BTG8ZY4EOIg=",
       "System.Collections.Concurrent.dll": "sha256-bBbUYzUSjxLjBtmOtCpfurWpx+IMQLXPH3Zi2f8OgEU=",
       "System.Collections.dll": "sha256-Vebz1EbWuEtLHfHT51uStbStMYUIzM9AioM31q41Bv8=",
       "System.ComponentModel.dll": "sha256-s62tOgq1vPSY0Mm1P92xKrE9YV4m4qbBORXcaZ9op1M=",
@@ -33,7 +33,7 @@
       "System.Console.dll": "sha256-XbUd2Q3Wv6ahPg9E0rqL5Mqo7PlvXHme4fZ1Okue0j8=",
       "System.Drawing.dll": "sha256-j4NWPORiaXTUIxkR3K27pqZQg2pT\/QB\/kVObO6p2DqI=",
       "System.Drawing.Primitives.dll": "sha256-KCKvZqWnT2TB9m\/1Bs6jqjeKpvo9dAC+4tv1wYD\/xEE=",
-      "System.Linq.dll": "sha256-uMmiUfZSp49EKAZYIq0IO241RnFHz4Qvyl7+ZkR\/sOk=",
+      "System.Linq.dll": "sha256-lmcMybkSxXmH4txMfvaUBokJXttp+dH8bf5G02WmJGI=",
       "System.Linq.Expressions.dll": "sha256-ORigzV+npR+VOdXS6GaKC1JAaPkjT665zHpgeYmJsW8=",
       "System.Memory.dll": "sha256-tYEHnxj4K2uH6VsRLDyiRWzLiFyUwKNs4JHpXC2EsSM=",
       "System.Net.Http.dll": "sha256-0cnHvAeZlYU+7kj7wKLZZEN9gKSPvZkosJL2KAJUEBY=",
