@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "BlazorBootstrap.dll": "sha256-gfugosYYEAdV1p7eei+H5JX26K+51dU\/ljf0LZZ2E6g=",
-      "BlazorUIWebAssembly.dll": "sha256-AmSC5Ue5IyoTkAttneQuI1kmksXjHpX1z9H0Jab6mNw=",
+      "BlazorUIWebAssembly.dll": "sha256-5jUSeXjDjBITywXbpx4BsGQ4QU48yBb5G0h6tVAX2Bg=",
       "Microsoft.AspNetCore.Components.dll": "sha256-1sePCDOcLTZpG4fxDDi6tiRROHcelaYwWnMmJHi9wfA=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-FWCEsnc\/zNrDRQFjJuO2vIo7cW\/XorIAne0MmXtx6aQ=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-\/LjnfvAWTEngQWE2nHiFC4bxUjd8IhylHkuNTa4nNKE=",
